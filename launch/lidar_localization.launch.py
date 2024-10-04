@@ -34,12 +34,16 @@ def generate_launch_description():
         arguments=['0','0','0','0','0','0','1','base_link','imu_link']
         )
 
-    localization_param_dir = launch.substitutions.LaunchConfiguration(
-        'localization_param_dir',
-        default=os.path.join(
-            get_package_share_directory('lidar_localization_ros2'),
-            'param',
-            'localization.yaml'))
+    # localization_param_dir = launch.substitutions.LaunchConfiguration(
+    #     'localization_param_dir',
+    #     default=os.path.join(
+    #         get_package_share_directory('lidar_localization_ros2'),
+    #         'param',
+    #         'localization.yaml'))
+    localization_param_dir = os.path.join(
+        get_package_share_directory('lidar_localization_ros2'),
+        'param',
+        'localization.yaml')
 
     lidar_localization = launch_ros.actions.LifecycleNode(
         name='lidar_localization',
